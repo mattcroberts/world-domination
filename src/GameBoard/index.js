@@ -18,10 +18,11 @@ const GameBoard = ({ dispatch }) => (
     <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
             <Rect x={20} y={20} width={50} height={50} fill={'red'} />
-            {nations.map(nation => (
+            {nations.map((nation, i) => (
                 <Nation
-                    {...nation}
+                    key={i.toString()}
                     onNationClick={() => dispatch(nationClick(nation))}
+                    {...nation}
                 />
             ))}
         </Layer>
