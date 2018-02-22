@@ -1,22 +1,12 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-
-import { Button, Welcome } from '@storybook/react/demo';
+import { Provider } from 'react-redux';
 import GameBoard from '../GameBoard/index';
+import configureStore from '../store';
 
-storiesOf('Welcome', module).add('to Storybook', () => (
-    <Welcome showApp={linkTo('Button')} />
-));
-
-storiesOf('Button', module)
-    .add('with text', () => (
-        <Button onClick={action('clicked')}>Hello Button</Button>
+storiesOf('GameBoard', module)
+    .addDecorator(story => (
+        <Provider store={configureStore()}>{story()}</Provider>
     ))
-    .add('with some emoji', () => (
-        <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
-    ));
-
-storiesOf('GameBoard', module).add('basic', () => <GameBoard />);
+    .add('basic', () => <GameBoard />);
