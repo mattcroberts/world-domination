@@ -1,13 +1,19 @@
 import React from 'react';
 import { Path } from 'react-konva';
 
-const nation = ({ data, scaleX, scaleY, onNationClick }) => {
+const nation = ({
+    map,
+    scaleX,
+    scaleY,
+    selected: isSelected,
+    onNationClick
+}) => {
     return (
         <Path
-            data={data}
+            data={map}
             fill="#00D2FF"
             stroke="black"
-            strokeWidth={0.1}
+            strokeWidth={isSelected ? 0.5 : 0.1}
             scaleX={scaleX}
             scaleY={scaleY}
             onClick={onNationClick}
