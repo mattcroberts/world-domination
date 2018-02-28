@@ -1,6 +1,7 @@
 export const actions = {
     NATION_CLICK: 'NATION_CLICK',
-    NATION_INIT: 'NATION_INIT'
+    NATION_INIT: 'NATION_INIT',
+    'NATION_SET-RULER': 'NATION_SET-RULER'
 };
 
 export const nationClick = ({ id }) => {
@@ -18,5 +19,13 @@ export const nationInit = ({ id }) => {
         nation: {
             id
         }
+    };
+};
+
+export const setNationRuler = (playerId, nationId) => {
+    return {
+        type: actions['NATION_SET-RULER'],
+        playerId,
+        nationId
     };
 };

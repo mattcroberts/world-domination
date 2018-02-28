@@ -7,11 +7,24 @@ const mapData = map.childs[2].childs
     }));
 
 const defaultState = mapData.reduce((acc, nation, i) => {
-    return { ...acc, [i]: { selected: false } };
+    return {
+        ...acc,
+        [i]: {
+            selected: false,
+            player: null
+        }
+    };
 }, {});
 
 export default (state = defaultState, action) => {
     switch (action.type) {
+    case actions['NATION_SET-RULER']:
+        return Object.assign({}, state, {
+            [action.nationId]: {
+                player: action.playerId,
+                selected: false
+            }
+        });
     case actions.NATION_INIT:
         return Object.assign({}, state, {
             [action.nation.id]: {
