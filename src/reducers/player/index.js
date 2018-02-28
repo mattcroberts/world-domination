@@ -1,11 +1,11 @@
 const defaultState = {
     0: {
         name: 'Matt',
-        color: '#ff0000'
+        color: 'red'
     },
     1: {
         name: 'Other Player',
-        color: '#000000'
+        color: 'blue'
     }
 };
 export const getPlayerById = (state, playerId) => state.players[playerId];

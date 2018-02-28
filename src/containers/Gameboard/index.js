@@ -34,21 +34,27 @@ const GameboardContainer = ({ nations, ...otherProps }) => {
 
 export default connect(
     (state, ownProps) => {
-        return Object.assign({}, ownProps, {
-            nations: Object.entries(state.nations)
-                .map(([nationId, nation]) => {
-                    const player = getPlayerById(state, nation.player);
-                    return {
-                        ...nation,
-                        id: nationId,
-                        fillColor: player ? player.color : undefined
-                    };
-                })
-                .reduce(
-                    (acc, nation) => ({ ...acc, [nation.id]: { ...nation } }),
-                    {}
-                )
-        });
+        return {
+            ...ownProps,
+            ...{
+                nations: Object.entries(state.nations)
+                    .map(([nationId, nation]) => {
+                        const player = getPlayerById(state, nation.player);
+                        return {
+                            ...nation,
+                            id: nationId,
+                            fillColor: player ? player.color : undefined
+                        };
+                    })
+                    .reduce(
+                        (acc, nation) => ({
+                            ...acc,
+                            [nation.id]: { ...nation }
+                        }),
+                        {}
+                    )
+            }
+        };
     },
     dispatch => {
         return bindActionCreators({ nationClick, nationInit }, dispatch);
