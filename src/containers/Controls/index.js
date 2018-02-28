@@ -10,6 +10,7 @@ const ControlsContainer = ({ endTurn, setNationRuler, ...props }) => (
         onEndTurnClick={() => endTurn(props.currentPlayerId)}
         onChooseStartNationClick={() => {
             setNationRuler(props.currentPlayerId, props.selectedNationId);
+            endTurn(props.currentPlayerId);
         }}
         {...props}
     />

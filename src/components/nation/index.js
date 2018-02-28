@@ -6,12 +6,13 @@ const nation = ({
     scaleX,
     scaleY,
     selected: isSelected,
+    fillColor = 'white',
     onNationClick
 }) => {
     return (
         <Path
             data={map}
-            fill="#00D2FF"
+            fill={fillColor}
             stroke="black"
             strokeWidth={isSelected ? 0.5 : 0.1}
             scaleX={scaleX}
