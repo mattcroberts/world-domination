@@ -1,10 +1,12 @@
 import React from 'react';
 import { Stage, Layer } from 'react-konva';
 
+import './Gameboard.css';
+
 import Nation from '../nation';
 
 const Gameboard = ({ nations, nationClick, scale }) => (
-    <Stage width={window.innerWidth} height={window.innerHeight}>
+    <Stage className="Gameboard" width={window.innerWidth} height={window.innerHeight}>
         <Layer>
             {Object.values(nations).map((nation, i) => {
                 return (

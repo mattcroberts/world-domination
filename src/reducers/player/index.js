@@ -9,10 +9,11 @@ const defaultState = {
     }
 };
 export const getPlayerById = (state, playerId) => state.players[playerId];
+export const getCurrentPlayer = (state) => state.players[state.game.currentPlayerId];
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-    default:
-        return state;
+        default:
+            return state;
     }
 };
