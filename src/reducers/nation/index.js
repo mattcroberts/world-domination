@@ -20,7 +20,8 @@ export default (state = defaultState, action) => {
     switch (action.type) {
     case actions['NATION_SET-RULER']:
         return Object.assign({}, state, {
-            [action.nationId]: {
+            [action.nation.id]: {
+                ...state[action.nation.id],
                 player: action.playerId,
                 selected: false
             }
@@ -28,12 +29,14 @@ export default (state = defaultState, action) => {
     case actions.NATION_INIT:
         return Object.assign({}, state, {
             [action.nation.id]: {
+                ...state[action.nation.id],
                 selected: false
             }
         });
     case actions.NATION_CLICK:
         return Object.assign({}, state, {
             [action.nation.id]: {
+                ...state[action.nation.id],
                 selected: !state[action.nation.id].selected
             }
         });

@@ -26,6 +26,8 @@ export const setNationRuler = (playerId, nationId) => {
     return {
         type: actions['NATION_SET-RULER'],
         playerId,
-        nationId
+        nation: {
+            id: nationId
+        }
     };
 };
