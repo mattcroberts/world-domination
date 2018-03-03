@@ -17,7 +17,7 @@ const defaultState = mapData.reduce((acc, nation, i) => {
 }, {});
 
 export const getSelectedNation = (state) => {
-    const nationId = '';
+    const [nationId] = Object.entries(state.nations).find(([id, nation]) => nation.selected) || [];
     return state.nations[nationId] ? state.nations[nationId] : null;
 };
 
