@@ -13,6 +13,9 @@ export default ({ currentPlayer, ruler, selectedNation }) => (
             <dd>{selectedNation ? selectedNation.id : 'N/A'}</dd>
             <dt>Borders</dt>
             <dd>{selectedNation ? selectedNation.borders.join(',') : ''}</dd>
+
+            <dt>Troops</dt>
+            <dd>{selectedNation ? selectedNation.troops : ''}</dd>
         </dl>
     </div>
 )

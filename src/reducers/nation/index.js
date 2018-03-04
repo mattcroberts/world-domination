@@ -16,7 +16,8 @@ const defaultState = mapData.reduce((acc, nation, i) => {
             id: i,
             selected: false,
             player: null,
-            borders: nation.borders
+            borders: nation.borders,
+            troops: 0
         }
     };
 }, {});
@@ -35,7 +36,8 @@ export default (state = defaultState, action) => {
                 [action.nation.id]: {
                     ...state[action.nation.id],
                     player: action.playerId,
-                    selected: false
+                    selected: false,
+                    troops: 100
                 }
             });
         case actions.NATION_INIT:
