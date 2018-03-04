@@ -13,12 +13,12 @@ const InfoPanelContainer = ({ ...props }) => (
 
 export default connect(
     state => {
-        const nation = getSelectedNation(state);
+        const selectedNation = getSelectedNation(state);
 
         return {
             currentPlayer: getCurrentPlayer(state),
-            ruler: nation ? getPlayerById(state, nation.player) : null,
-            nation
+            ruler: selectedNation ? getPlayerById(state, selectedNation.player) : null,
+            selectedNation
         };
     },
     dispatch => {

@@ -1,8 +1,11 @@
 import { actions } from '../../actions';
 import map from '../../maps/out.json';
+import borders from '../../maps/borders.json';
+
 const mapData = map.childs[2].childs
     .filter(child => child.name === 'path')
-    .map(child => ({
+    .map((child, i) => ({
+        borders: borders[i] || [],
         data: child.attrs.d
     }));
 
@@ -10,8 +13,10 @@ const defaultState = mapData.reduce((acc, nation, i) => {
     return {
         ...acc,
         [i]: {
+            id: i,
             selected: false,
-            player: null
+            player: null,
+            borders: nation.borders
         }
     };
 }, {});

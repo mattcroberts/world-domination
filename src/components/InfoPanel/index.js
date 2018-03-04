@@ -12,7 +12,7 @@ export default ({ currentPlayer, ruler, selectedNation }) => (
             <dt>NationId</dt>
             <dd>{selectedNation ? selectedNation.id : 'N/A'}</dd>
             <dt>Borders</dt>
-            <dd></dd>
+            <dd>{selectedNation ? selectedNation.borders.join(',') : ''}</dd>
         </dl>
     </div>
 )

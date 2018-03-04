@@ -11,7 +11,9 @@
             "url": "http://localhost:3000",
             "sourceMapPathOverrides": {
                 "/mnt/c/users/mattr/dev/world-domination/*": "${workspaceFolder}\\*"
-            }
+            },
+            "smartStep": true,
+            "showAsyncStacks": true
         }
     ]
 }
