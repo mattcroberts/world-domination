@@ -1,8 +1,10 @@
 import React from 'react';
+
+import css from './App.css';
+
 import GameboardContainer from './containers/Gameboard';
 import ControlsContainer from './containers/Controls';
 import InfoPanelContainer from './containers/InfoPanel';
-import css from './App.css';
 
 const App = () => (
     <React.Fragment>

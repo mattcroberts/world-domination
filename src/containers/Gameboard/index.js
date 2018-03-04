@@ -32,30 +32,31 @@ const GameboardContainer = ({ nations, ...otherProps }) => {
     return <Gameboard nations={nationsWithMap} scale={scale} {...otherProps} />;
 };
 
+export const mapStateToProps = (state, ownProps) => {
+    return {
+        ...ownProps,
+        ...{
+            nations: Object.entries(state.nations)
+                .map(([nationId, nation]) => {
+                    const player = getPlayerById(state, nation.player);
+                    return {
+                        ...nation,
+                        fillColor: player ? player.color : undefined
+                    };
+                })
+                .reduce(
+                    (acc, nation) => ({
+                        ...acc,
+                        [nation.id]: { ...nation }
+                    }),
+                    {}
+                )
+        }
+    };
+};
+
 export default connect(
-    (state, ownProps) => {
-        return {
-            ...ownProps,
-            ...{
-                nations: Object.entries(state.nations)
-                    .map(([nationId, nation]) => {
-                        const player = getPlayerById(state, nation.player);
-                        return {
-                            ...nation,
-                            id: nationId,
-                            fillColor: player ? player.color : undefined
-                        };
-                    })
-                    .reduce(
-                        (acc, nation) => ({
-                            ...acc,
-                            [nation.id]: { ...nation }
-                        }),
-                        {}
-                    )
-            }
-        };
-    },
+    mapStateToProps,
     dispatch => {
         return bindActionCreators({ nationClick, nationInit }, dispatch);
     }
