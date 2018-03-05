@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { endTurn } from '../../reducers/game';
+import { calculateInvasionTargets } from '../../reducers/nation';
 import { setNationRuler } from '../../actions';
 import Controls from '../../components/Controls';
 
@@ -18,13 +19,11 @@ const ControlsContainer = ({ endTurn, setNationRuler, ...props }) => (
 
 export default connect(
     state => {
-        const [nationId] =
-            Object.entries(state.nations).find(
-                ([, { selected }]) => selected
-            ) || [];
+        const { id: nationId } = Object.values(state.nations).find(({ selected }) => selected) || { };
         return {
             currentPlayerId: state.game.currentPlayerId,
-            selectedNationId: nationId ? nationId : null
+            selectedNationId: nationId ? nationId : null,
+            invasionTargets: nationId ? calculateInvasionTargets(state, nationId) : []
         };
     },
     dispatch => {

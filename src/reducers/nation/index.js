@@ -29,18 +29,25 @@ export const getSelectedNation = (state) => {
 
 export const getNationById = (state, nationId) => state.nations[nationId] || null;
 
-export const calculateTargets = (state, nationId) => {
+const hasPlayer = (state, nationId) => {
+    const borderNation = getNationById(state, nationId);
+
+    return borderNation.player !== null;
+};
+
+export const calculateAttackTargets = (state, nationId) => {
     const nation = getNationById(state, nationId);
 
     if (nation.troops < 2) {
         return [];
     }
 
-    return getNationById(state, nationId).borders.filter((nationId) => {
-        const borderNation = getNationById(state, nationId);
+    return getNationById(state, nationId).borders.filter(nation => hasPlayer(state, nation));
+};
 
-        return borderNation.player !== null;
-    });
+export const calculateInvasionTargets = (state, nationId) => {
+    const nation = getNationById(state, nationId);
+    return getNationById(state, nationId).borders.filter(nation => !hasPlayer(state, nation));
 };
 
 export default (state = defaultState, action) => {

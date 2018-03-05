@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InfoPanel from '../../components/InfoPanel';
-import { calculateTargets, getSelectedNation, getNationById } from '../../reducers/nation';
+import { calculateAttackTargets, getSelectedNation, getNationById } from '../../reducers/nation';
 import { getCurrentPlayer, getPlayerById } from '../../reducers/player';
 
 const InfoPanelContainer = ({ ...props }) => (
@@ -18,7 +18,7 @@ export default connect(
         return {
             currentPlayer: getCurrentPlayer(state),
             ruler: selectedNation ? getPlayerById(state, selectedNation.player) : null,
-            targets: selectedNation ? calculateTargets(state, selectedNation.id) : [],
+            targets: selectedNation ? calculateAttackTargets(state, selectedNation.id) : [],
             selectedNation
         };
     },
