@@ -13,7 +13,7 @@ export const getCurrentPlayer = (state) => state.players[state.game.currentPlaye
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-        default:
-            return state;
+    default:
+        return state;
     }
 };

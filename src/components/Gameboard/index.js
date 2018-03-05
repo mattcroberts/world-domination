@@ -9,8 +9,8 @@ const Gameboard = ({ nations, nationClick, scale }) => (
     <Stage className="Gameboard" width={window.innerWidth} height={window.innerHeight}>
         <Layer>
             {Object.values(nations).map((nation, i) => {
-                return (
-                    <Nation
+                return ( 
+                    <Nation 
                         scaleX={scale}
                         scaleY={scale}
                         key={i.toString()}

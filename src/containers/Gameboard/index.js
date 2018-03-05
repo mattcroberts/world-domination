@@ -47,7 +47,7 @@ export const mapStateToProps = (state, ownProps) => {
                 .reduce(
                     (acc, nation) => ({
                         ...acc,
-                        [nation.id]: { ...nation }
+                        [nation.id]: nation
                     }),
                     {}
                 )
