@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import InfoPanel from '../../components/InfoPanel';
 import {
     calculateAttackTargets,
+    calculateInvasionTargets,
     getSelectedNation,
     getNationById
 } from '../../reducers/nation';
@@ -20,8 +21,11 @@ export default connect(
             ruler: selectedNation
                 ? getPlayerById(state, selectedNation.player)
                 : null,
-            targets: selectedNation
+            attackTargets: selectedNation
                 ? calculateAttackTargets(state, selectedNation.id)
+                : [],
+            invasionTargets: selectedNation
+                ? calculateInvasionTargets(state, selectedNation.id)
                 : [],
             selectedNation
         };
