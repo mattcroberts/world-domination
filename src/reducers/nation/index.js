@@ -22,12 +22,15 @@ const defaultState = mapData.reduce((acc, nation, i) => {
     };
 }, {});
 
-export const getSelectedNation = (state) => {
-    const [nationId] = Object.entries(state.nations).find(([id, nation]) => nation.selected) || [];
+export const getSelectedNation = state => {
+    const [nationId] =
+        Object.entries(state.nations).find(([id, nation]) => nation.selected) ||
+        [];
     return state.nations[nationId] ? state.nations[nationId] : null;
 };
 
-export const getNationById = (state, nationId) => state.nations[nationId] || null;
+export const getNationById = (state, nationId) =>
+    state.nations[nationId] || null;
 
 const hasPlayer = (state, nationId) => {
     const borderNation = getNationById(state, nationId);
@@ -42,12 +45,22 @@ export const calculateAttackTargets = (state, nationId) => {
         return [];
     }
 
-    return getNationById(state, nationId).borders.filter(nation => hasPlayer(state, nation));
+    return getNationById(state, nationId).borders.filter(nation =>
+        hasPlayer(state, nation)
+    );
 };
 
 export const calculateInvasionTargets = (state, nationId) => {
     const nation = getNationById(state, nationId);
-    return getNationById(state, nationId).borders.filter(nation => !hasPlayer(state, nation));
+    return getNationById(state, nationId).borders.filter(
+        nation => !hasPlayer(state, nation)
+    );
+};
+
+const resetSelected = state => {
+    return Object.entries(state)
+        .map(([id, nation]) => ({ ...nation, selected: false }))
+        .reduce((acc, nation) => ({ ...acc, [nation.id]: nation }), {});
 };
 
 export default (state = defaultState, action) => {
@@ -69,7 +82,7 @@ export default (state = defaultState, action) => {
             }
         });
     case actions.NATION_CLICK:
-        return Object.assign({}, state, {
+        return Object.assign({}, resetSelected(state), {
             [action.nation.id]: {
                 ...state[action.nation.id],
                 selected: !state[action.nation.id].selected
