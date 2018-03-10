@@ -16,9 +16,10 @@ module.exports = {
         'react/jsx-uses-vars': ['error'],
         'react/jsx-uses-react': ['error'],
         'no-console': 0,
-        indent: ['error', 4],
+        'indent': ['error', 4],
         'linebreak-style': ['error', 'unix'],
-        quotes: ['error', 'single'],
-        semi: ['error', 'always']
+        'quotes': ['error', 'single'],
+        'quote-props': ['error', 'consistent-as-needed'],
+        'semi': ['error', 'always']
     }
 };
