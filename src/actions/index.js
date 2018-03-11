@@ -1,12 +1,13 @@
 export const actions = {
-    NATION_CLICK: 'NATION_CLICK',
-    NATION_INIT: 'NATION_INIT',
-    'NATION_SET-RULER': 'NATION_SET-RULER'
+    'NATION_CLICK': 'NATION_CLICK',
+    'NATION_INIT': 'NATION_INIT',
+    'NATION_SET-RULER': 'NATION_SET-RULER',
+    'END_TURN': 'END_TURN'
 };
 
 export const nationClick = ({ id }) => {
     return {
-        type: 'NATION_CLICK',
+        type: actions.NATION_CLICK,
         nation: {
             id
         }
@@ -15,7 +16,7 @@ export const nationClick = ({ id }) => {
 
 export const nationInit = ({ id }) => {
     return {
-        type: 'NATION_INIT',
+        type: actions.NATION_INIT,
         nation: {
             id
         }
@@ -29,5 +30,12 @@ export const setNationRuler = (playerId, nationId) => {
         nation: {
             id: nationId
         }
+    };
+};
+
+export const endTurn = player => {
+    return {
+        type: actions.END_TURN,
+        player
     };
 };

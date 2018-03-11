@@ -5,32 +5,30 @@ import InfoPanel from '../../components/InfoPanel';
 import {
     calculateAttackTargets,
     calculateInvasionTargets,
-    getSelectedNation,
-    getNationById
+    getNationById,
+    getSelectedNation
 } from '../../reducers/nation';
 import { getCurrentPlayer, getPlayerById } from '../../reducers/player';
 
 const InfoPanelContainer = ({ ...props }) => <InfoPanel {...props} />;
 
-export default connect(
-    state => {
-        const selectedNation = getSelectedNation(state);
+export const mapStateToProps = state => {
+    const selectedNation = getSelectedNation(state);
 
-        return {
-            currentPlayer: getCurrentPlayer(state),
-            ruler: selectedNation
-                ? getPlayerById(state, selectedNation.player)
-                : null,
-            attackTargets: selectedNation
-                ? calculateAttackTargets(state, selectedNation.id)
-                : [],
-            invasionTargets: selectedNation
-                ? calculateInvasionTargets(state, selectedNation.id)
-                : [],
-            selectedNation
-        };
-    },
-    dispatch => {
-        return bindActionCreators({}, dispatch);
-    }
-)(InfoPanelContainer);
+    return {
+        currentPlayer: getCurrentPlayer(state),
+        ruler: selectedNation
+            ? getPlayerById(state, selectedNation.player)
+            : null,
+        attackTargets: selectedNation
+            ? calculateAttackTargets(state, selectedNation.id)
+            : [],
+        invasionTargets: selectedNation
+            ? calculateInvasionTargets(state, selectedNation.id)
+            : [],
+        selectedNation
+    };
+};
+export default connect(mapStateToProps, dispatch => {
+    return bindActionCreators({}, dispatch);
+})(InfoPanelContainer);

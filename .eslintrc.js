@@ -20,6 +20,7 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'quotes': ['error', 'single'],
         'quote-props': ['error', 'consistent-as-needed'],
-        'semi': ['error', 'always']
+        'semi': ['error', 'always'],
+        'sort-imports': ['error']
     }
 };
