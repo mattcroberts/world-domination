@@ -1,30 +1,29 @@
 import React from 'react';
 import { Layer, Stage } from 'react-konva';
 
-import './Gameboard.css';
-
 import Nation from '../nation';
 
-const Gameboard = ({ nations, nationClick, scale }) => (
-    <Stage
-        className="Gameboard"
-        width={window.innerWidth}
-        height={window.innerHeight}
-    >
-        <Layer>
-            {Object.values(nations).map((nation, i) => {
-                return (
-                    <Nation
-                        scaleX={scale}
-                        scaleY={scale}
-                        key={i.toString()}
-                        onNationClick={() => nationClick({ id: i })}
-                        {...nation}
-                    />
-                );
-            })}
-        </Layer>
-    </Stage>
-);
+import './Gameboard.css';
+
+const Gameboard = ({ nations, nationClick, outerHeight, outerWidth }) => {
+    const scale = outerWidth / 237.823; // What is this magic number?!
+    return (
+        <Stage className="Gameboard" width={outerWidth} height={outerHeight}>
+            <Layer>
+                {Object.values(nations).map((nation, i) => {
+                    return (
+                        <Nation
+                            key={i.toString()}
+                            onNationClick={() => nationClick({ id: i })}
+                            {...nation}
+                            scaleX={scale}
+                            scaleY={scale}
+                        />
+                    );
+                })}
+            </Layer>
+        </Stage>
+    );
+};
 
 export default Gameboard;

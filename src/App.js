@@ -5,12 +5,16 @@ import './App.css';
 import GameboardContainer from './containers/Gameboard';
 import ControlsContainer from './containers/Controls';
 import InfoPanelContainer from './containers/InfoPanel';
+import Dialog from './components/Dialog';
 
 const App = () => (
     <React.Fragment>
         <ControlsContainer />
-        <GameboardContainer />
-        <InfoPanelContainer />
+        <div className="App">
+            <GameboardContainer />
+            <InfoPanelContainer />
+            <Dialog />
+        </div>
     </React.Fragment>
 );
 

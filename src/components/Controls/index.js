@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Controls.css';
+
 export default ({
     currentPlayerId,
     onEndTurnClick,
@@ -7,7 +9,7 @@ export default ({
     attackTargets,
     invasionTargets
 }) => (
-    <div>
+    <div className="Controls">
         <span>Current Player: {currentPlayerId}</span>
         <button onClick={onEndTurnClick}>End turn</button>
         <button onClick={onChooseStartNationClick}>Choose Home Nation</button>

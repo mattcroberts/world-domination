@@ -1,0 +1,6 @@
+.Dialog {
+  display: none;
+  background: lightblue;
+  position: absolute;
+  left: 100px;
+}

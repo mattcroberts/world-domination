@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Gameboard from '../../components/Gameboard';
+import Dummy from '../../components/Dummy';
+
 import map from '../../maps/out.json';
 import { nationClick, nationInit } from '../../actions';
 import { getPlayerById } from '../../reducers/player';
@@ -12,11 +13,6 @@ const mapData = map.childs[2].childs
     .map(child => ({
         data: child.attrs.d
     }));
-
-const scale = Math.min(
-    window.innerWidth / 237.823,
-    window.innerHeight / 189.585
-);
 
 const GameboardContainer = ({ nations, ...otherProps }) => {
     const nationsWithMap = Object.entries(nations).reduce(
@@ -29,7 +25,7 @@ const GameboardContainer = ({ nations, ...otherProps }) => {
         },
         {}
     );
-    return <Gameboard nations={nationsWithMap} scale={scale} {...otherProps} />;
+    return <Dummy nations={nationsWithMap} {...otherProps} />;
 };
 
 export const mapStateToProps = (state, ownProps) => {
