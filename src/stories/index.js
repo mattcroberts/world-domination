@@ -1,7 +1,7 @@
 import configureStore from '../store';
-import GameBoard from '../GameBoard';
-import map from '../../maps/out.json';
-import Nation from '../nation';
+import GameBoard from '../components/Gameboard';
+import map from '../maps/out.json';
+import Nation from '../components/nation';
 import React from 'react';
 
 import { Layer, Stage } from 'react-konva';
