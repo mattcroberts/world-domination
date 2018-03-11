@@ -1,6 +1,6 @@
 import React from 'react';
 
-import css from './App.css';
+import './App.css';
 
 import GameboardContainer from './containers/Gameboard';
 import ControlsContainer from './containers/Controls';

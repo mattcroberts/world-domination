@@ -167,8 +167,7 @@ describe('InfoPanel mapStateToProps', () => {
                         borders: [0],
                         selected: false
                     }
-                },
-                players
+                }
             },
             {}
         );
@@ -197,8 +196,7 @@ describe('InfoPanel mapStateToProps', () => {
                         borders: [0],
                         selected: false
                     }
-                },
-                players
+                }
             },
             {}
         );

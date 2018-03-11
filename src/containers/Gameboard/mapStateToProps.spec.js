@@ -55,8 +55,7 @@ describe('Gameboard mapStateToProps', () => {
                         troops: 100,
                         borders: [0]
                     }
-                },
-                players
+                }
             },
             {}
         );

@@ -37,7 +37,7 @@ export const mapStateToProps = (state, ownProps) => {
         ...ownProps,
         ...{
             nations: Object.entries(state.nations)
-                .map(([nationId, nation]) => {
+                .map(([, nation]) => {
                     const player = getPlayerById(state, nation.player);
                     return {
                         ...nation,
@@ -55,9 +55,6 @@ export const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    dispatch => {
-        return bindActionCreators({ nationClick, nationInit }, dispatch);
-    }
-)(GameboardContainer);
+export default connect(mapStateToProps, dispatch => {
+    return bindActionCreators({ nationClick, nationInit }, dispatch);
+})(GameboardContainer);

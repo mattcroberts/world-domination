@@ -24,7 +24,7 @@ const defaultState = mapData.reduce((acc, nation, i) => {
 
 export const getSelectedNation = state => {
     const [nationId] =
-        Object.entries(state.nations).find(([id, nation]) => nation.selected) ||
+        Object.entries(state.nations).find(([, nation]) => nation.selected) ||
         [];
     return state.nations[nationId] ? state.nations[nationId] : null;
 };
@@ -51,7 +51,6 @@ export const calculateAttackTargets = (state, nationId) => {
 };
 
 export const calculateInvasionTargets = (state, nationId) => {
-    const nation = getNationById(state, nationId);
     return getNationById(state, nationId).borders.filter(
         nation => !hasPlayer(state, nation)
     );
@@ -59,7 +58,7 @@ export const calculateInvasionTargets = (state, nationId) => {
 
 const resetSelected = state => {
     return Object.entries(state)
-        .map(([id, nation]) => ({ ...nation, selected: false }))
+        .map(([, nation]) => ({ ...nation, selected: false }))
         .reduce((acc, nation) => ({ ...acc, [nation.id]: nation }), {});
 };
 

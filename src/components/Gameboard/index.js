@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stage, Layer } from 'react-konva';
+import { Layer, Stage } from 'react-konva';
 
 import './Gameboard.css';
 

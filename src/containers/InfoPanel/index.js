@@ -5,7 +5,6 @@ import InfoPanel from '../../components/InfoPanel';
 import {
     calculateAttackTargets,
     calculateInvasionTargets,
-    getNationById,
     getSelectedNation
 } from '../../reducers/nation';
 import { getCurrentPlayer, getPlayerById } from '../../reducers/player';
