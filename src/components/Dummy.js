@@ -16,8 +16,8 @@ export default class Dummy extends React.Component {
         if (this.element) {
             const node = ReactDOM.findDOMNode(this.element);
             this.setState({
-                offsetWidth: ReactDOM.findDOMNode(this.element).offsetWidth,
-                offsetHeight: ReactDOM.findDOMNode(this.element).offsetHeight
+                offsetWidth: node.offsetWidth,
+                offsetHeight: node.offsetHeight
             });
         }
     }
