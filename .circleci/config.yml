@@ -17,6 +17,9 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a9:0f:29:a0:fd:dc:61:fd:69:34:93:4d:56:83:dc:42"
       - checkout
 
       # Download and cache dependencies
@@ -36,6 +39,8 @@ jobs:
       # run tests!
       - run: npm run lint
       - run: npm test
+      - run: git config --global user.email circleci@circleci
+      - run: git config --global user.name CircleCI
       - run: npm run deploy
 
 
