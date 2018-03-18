@@ -1,6 +1,11 @@
+import _merge from 'lodash.merge';
 import { actions } from '../../actions';
 import map from '../../maps/out.json';
 import borders from '../../maps/borders.json';
+import { getCurrentPlayer } from '../player';
+
+const ATTACK_COEFFICIENT = 2;
+const MIN_RESERVE_TROOPS = 1;
 
 const mapData = map.childs[2].childs
     .filter(child => child.name === 'path')
@@ -62,6 +67,73 @@ const resetSelected = state => {
         .reduce((acc, nation) => ({ ...acc, [nation.id]: nation }), {});
 };
 
+/**
+ * Nation can be attacked if the nations that border it are occupied by the current player and have > 1 troops
+ *
+ * @param {Object} state
+ * @param {Object} nation
+ *
+ * @return {boolean}
+ */
+export const nationCanBeAttacked = (state, nation) => {
+    const currentPlayerId = getCurrentPlayer(state).id;
+    return (
+        nation !== null &&
+        nation.player !== currentPlayerId &&
+        nation.borders.filter(nationId => {
+            const n = getNationById(state, nationId);
+            return n.player === currentPlayerId && n.troops > 1;
+        }).length > 0
+    );
+};
+
+const calculateAttackResult = (
+    state,
+    { aggressorPlayerId, defendingNation }
+) => {
+    const defendingTroops = defendingNation.troops;
+    const skirmishes = defendingNation.borders
+        .map(nationId => state[nationId])
+        .filter(nation => aggressorPlayerId === nation.player)
+        .map(({ id, troops: aggressorTroops }) => {
+            return {
+                id,
+                defenderTroops: Math.max(
+                    defendingTroops - aggressorTroops / ATTACK_COEFFICIENT,
+                    0
+                ),
+                aggressorTroops: Math.max(
+                    MIN_RESERVE_TROOPS,
+                    aggressorTroops - defendingTroops * ATTACK_COEFFICIENT
+                )
+            };
+        });
+    console.log(skirmishes);
+    const result = Object.assign(
+        {
+            [defendingNation.id]: {
+                troops: skirmishes[0].defenderTroops,
+                player:
+                    skirmishes[0].defenderTroops > 0
+                        ? defendingNation.player
+                        : aggressorPlayerId
+            }
+        },
+        skirmishes
+            .map(({ id, aggressorTroops }) => ({
+                [id]: { troops: aggressorTroops }
+            }))
+            .reduce((acc, nation) => {
+                return {
+                    ...acc,
+                    ...nation
+                };
+            })
+    );
+    console.log(result);
+    return result;
+};
+
 export default (state = defaultState, action) => {
     switch (action.type) {
     case actions['NATION_SET-RULER']:
@@ -87,7 +159,12 @@ export default (state = defaultState, action) => {
                 selected: !state[action.nation.id].selected
             }
         });
-
+    case actions.NATION_ATTACK:
+        return _merge(
+            {},
+            resetSelected(state),
+            calculateAttackResult(state, action)
+        );
     default:
         return state;
     }

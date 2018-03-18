@@ -1,4 +1,5 @@
 export const actions = {
+    'NATION_ATTACK': 'NATION_ATTACK',
     'NATION_CLICK': 'NATION_CLICK',
     'NATION_INIT': 'NATION_INIT',
     'NATION_SET-RULER': 'NATION_SET-RULER',
@@ -37,5 +38,13 @@ export const endTurn = player => {
     return {
         type: actions.END_TURN,
         player
+    };
+};
+
+export const attack = (aggressorPlayerId, nation) => {
+    return {
+        type: actions.NATION_ATTACK,
+        aggressorPlayerId,
+        defendingNation: nation
     };
 };

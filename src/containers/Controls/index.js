@@ -3,16 +3,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
     calculateAttackTargets,
-    calculateInvasionTargets
+    calculateInvasionTargets,
+    getSelectedNation,
+    nationCanBeAttacked
 } from '../../reducers/nation';
-import { endTurn, setNationRuler } from '../../actions';
+import { attack, endTurn, setNationRuler } from '../../actions';
 import Controls from '../../components/Controls';
 
-const ControlsContainer = ({ endTurn, setNationRuler, ...props }) => (
+const ControlsContainer = ({ attack, endTurn, setNationRuler, ...props }) => (
     <Controls
         onEndTurnClick={() => endTurn(props.currentPlayerId)}
         onChooseStartNationClick={() => {
-            setNationRuler(props.currentPlayerId, props.selectedNationId);
+            setNationRuler(props.currentPlayerId, props.selectedNation.id);
+            endTurn(props.currentPlayerId);
+        }}
+        onAttackClick={() => {
+            attack(props.currentPlayerId, props.selectedNation);
             endTurn(props.currentPlayerId);
         }}
         {...props}
@@ -20,14 +26,18 @@ const ControlsContainer = ({ endTurn, setNationRuler, ...props }) => (
 );
 
 export const mapStateToProps = state => {
-    const { id: nationId } =
-        Object.values(state.nations).find(({ selected }) => selected) || {};
+    const selectedNation = getSelectedNation(state);
     return {
         currentPlayerId: state.game.currentPlayerId,
-        selectedNationId: nationId ? nationId : null,
-        attackTargets: nationId ? calculateAttackTargets(state, nationId) : [],
-        invasionTargets: nationId
-            ? calculateInvasionTargets(state, nationId)
+        selectedNation,
+        controlEnabled: {
+            attack: nationCanBeAttacked(state, selectedNation)
+        },
+        attackTargets: selectedNation
+            ? calculateAttackTargets(state, selectedNation.id)
+            : [],
+        invasionTargets: selectedNation
+            ? calculateInvasionTargets(state, selectedNation.id)
             : []
     };
 };
@@ -35,6 +45,7 @@ export const mapStateToProps = state => {
 export default connect(mapStateToProps, dispatch => {
     return bindActionCreators(
         {
+            attack,
             endTurn,
             setNationRuler
         },
