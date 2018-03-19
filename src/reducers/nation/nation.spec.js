@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import nationReducer from './index';
-import { nationClick } from '../../actions';
+import { nationClick } from '../../actions/nation';
 
 describe('NATION_CLICK', () => {
     let state;

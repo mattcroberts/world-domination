@@ -175,33 +175,4 @@ describe('InfoPanel mapStateToProps', () => {
         expect(mapped.attackTargets).to.be.an('Array');
         expect(mapped.attackTargets).to.include(1);
     });
-
-    it('should map invasion targets', () => {
-        const mapped = mapStateToProps(
-            {
-                players,
-                game,
-                nations: {
-                    0: {
-                        id: 0,
-                        player: 0,
-                        troops: 100,
-                        borders: [1],
-                        selected: true
-                    },
-                    1: {
-                        id: 1,
-                        player: null,
-                        troops: 0,
-                        borders: [0],
-                        selected: false
-                    }
-                }
-            },
-            {}
-        );
-
-        expect(mapped.invasionTargets).to.be.an('Array');
-        expect(mapped.invasionTargets).to.include(1);
-    });
 });

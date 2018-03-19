@@ -83,7 +83,7 @@ describe('Controls mapStateToProps', () => {
         expect(result.currentPlayerId).to.equal(0);
     });
 
-    it('should map selectedNationId', () => {
+    it('should map selectedNation', () => {
         const result = mapStateToProps(
             {
                 nations: {
@@ -91,7 +91,15 @@ describe('Controls mapStateToProps', () => {
                         id: 0,
                         player: 0,
                         troops: 0,
-                        borders: [1]
+                        borders: [1],
+                        selected: true
+                    },
+                    1: {
+                        id: 1,
+                        player: 1,
+                        troops: 0,
+                        borders: [0],
+                        selected: false
                     }
                 },
                 players,
@@ -100,7 +108,13 @@ describe('Controls mapStateToProps', () => {
             {}
         );
 
-        expect(result.selectedNationId).to.equal(null);
+        expect(result.selectedNation).to.deep.equal({
+            id: 0,
+            player: 0,
+            troops: 0,
+            borders: [1],
+            selected: true
+        });
     });
 
     it('should map attackTargets', () => {
@@ -123,7 +137,7 @@ describe('Controls mapStateToProps', () => {
         expect(result.attackTargets).to.be.an('array');
     });
 
-    it('should map selectedNationId', () => {
+    it('should map selectedNation', () => {
         const result = mapStateToProps(
             {
                 nations: {
@@ -140,26 +154,6 @@ describe('Controls mapStateToProps', () => {
             {}
         );
 
-        expect(result.selectedNationId).to.equal(null);
-    });
-
-    it('should map invasionTargets', () => {
-        const result = mapStateToProps(
-            {
-                nations: {
-                    0: {
-                        id: 0,
-                        player: 0,
-                        troops: 0,
-                        borders: [1]
-                    }
-                },
-                players,
-                game
-            },
-            {}
-        );
-
-        expect(result.invasionTargets).to.be.an('array');
+        expect(result.selectedNation).to.not.exist;
     });
 });
