@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import Dummy from '../../components/Dummy';
 
 import map from '../../maps/out.json';
-import { nationClick, nationInit } from '../../actions';
+import { nationClick } from '../../actions/nation';
 import { getPlayerById } from '../../reducers/player';
 
 const mapData = map.childs[2].childs
@@ -52,5 +52,5 @@ export const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps, dispatch => {
-    return bindActionCreators({ nationClick, nationInit }, dispatch);
+    return bindActionCreators({ nationClick }, dispatch);
 })(GameboardContainer);

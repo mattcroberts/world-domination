@@ -1,4 +1,4 @@
-import { actions } from '../../actions';
+import { ACTIONS } from '../../actions/game';
 
 const defaultState = {
     currentPlayerId: 0,
@@ -10,7 +10,7 @@ const getNextPlayerId = (currentPlayerId, playerCount) =>
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-    case actions.END_TURN:
+    case ACTIONS.END_TURN:
         return Object.assign({}, state, {
             currentPlayerId: getNextPlayerId(
                 state.currentPlayerId,

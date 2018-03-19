@@ -7,7 +7,9 @@ import {
     getSelectedNation,
     nationCanBeAttacked
 } from '../../reducers/nation';
-import { attack, endTurn, setNationRuler } from '../../actions';
+import { attack, setNationRuler } from '../../actions/nation';
+import { endTurn } from '../../actions/game';
+
 import Controls from '../../components/Controls';
 
 const ControlsContainer = ({ attack, endTurn, setNationRuler, ...props }) => (

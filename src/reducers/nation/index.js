@@ -1,5 +1,5 @@
 import _merge from 'lodash.merge';
-import { actions } from '../../actions';
+import { ACTIONS } from '../../actions/nation';
 import map from '../../maps/out.json';
 import borders from '../../maps/borders.json';
 import { getCurrentPlayer } from '../player';
@@ -136,7 +136,7 @@ const calculateAttackResult = (
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-    case actions['NATION_SET-RULER']:
+    case ACTIONS.SET_RULER:
         return Object.assign({}, state, {
             [action.nation.id]: {
                 ...state[action.nation.id],
@@ -145,21 +145,14 @@ export default (state = defaultState, action) => {
                 troops: 100
             }
         });
-    case actions.NATION_INIT:
-        return Object.assign({}, state, {
-            [action.nation.id]: {
-                ...state[action.nation.id],
-                selected: false
-            }
-        });
-    case actions.NATION_CLICK:
+    case ACTIONS.CLICK:
         return Object.assign({}, resetSelected(state), {
             [action.nation.id]: {
                 ...state[action.nation.id],
                 selected: !state[action.nation.id].selected
             }
         });
-    case actions.NATION_ATTACK:
+    case ACTIONS.ATTACK:
         return _merge(
             {},
             resetSelected(state),
