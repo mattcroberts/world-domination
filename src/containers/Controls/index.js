@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
     calculateAttackTargets,
-    calculateInvasionTargets,
     getSelectedNation,
     nationCanBeAttacked
 } from '../../reducers/nation';
@@ -37,9 +36,6 @@ export const mapStateToProps = state => {
         },
         attackTargets: selectedNation
             ? calculateAttackTargets(state, selectedNation.id)
-            : [],
-        invasionTargets: selectedNation
-            ? calculateInvasionTargets(state, selectedNation.id)
             : []
     };
 };

@@ -1,13 +1,7 @@
 import React from 'react';
 import './InfoPanel.css';
 
-export default ({
-    currentPlayer,
-    ruler,
-    invasionTargets,
-    attackTargets,
-    selectedNation
-}) => (
+export default ({ currentPlayer, ruler, attackTargets, selectedNation }) => (
     <div className="InfoPanel">
         <dl>
             <dt>Current Player</dt>
@@ -23,10 +17,8 @@ export default ({
             <dt>Troops</dt>
             <dd>{selectedNation ? selectedNation.troops : ''}</dd>
 
-            <dt>Targets (Attack/Invasion)</dt>
-            <dd>
-                {attackTargets.join(',')}/{invasionTargets.join(',')}
-            </dd>
+            <dt>Targets (Attack)</dt>
+            <dd>{attackTargets.join(',')}</dd>
         </dl>
     </div>
 );

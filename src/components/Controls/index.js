@@ -17,6 +17,5 @@ export default ({
         <button disabled={!controlEnabled.attack} onClick={onAttackClick}>
             Attack
         </button>
-        <button onClick={() => undefined}>Invade</button>
     </div>
 );

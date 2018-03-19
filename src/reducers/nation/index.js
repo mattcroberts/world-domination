@@ -55,12 +55,6 @@ export const calculateAttackTargets = (state, nationId) => {
     );
 };
 
-export const calculateInvasionTargets = (state, nationId) => {
-    return getNationById(state, nationId).borders.filter(
-        nation => !hasPlayer(state, nation)
-    );
-};
-
 const resetSelected = state => {
     return Object.entries(state)
         .map(([, nation]) => ({ ...nation, selected: false }))

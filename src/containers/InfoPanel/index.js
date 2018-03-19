@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import InfoPanel from '../../components/InfoPanel';
 import {
     calculateAttackTargets,
-    calculateInvasionTargets,
     getSelectedNation
 } from '../../reducers/nation';
 import { getCurrentPlayer, getPlayerById } from '../../reducers/player';
@@ -21,9 +20,6 @@ export const mapStateToProps = state => {
             : null,
         attackTargets: selectedNation
             ? calculateAttackTargets(state, selectedNation.id)
-            : [],
-        invasionTargets: selectedNation
-            ? calculateInvasionTargets(state, selectedNation.id)
             : [],
         selectedNation
     };
