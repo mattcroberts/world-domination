@@ -6,9 +6,22 @@ import {
     calculateAttackTargets,
     getSelectedNation
 } from '../../reducers/nation';
+
+import { fetchData } from '../../actions/async';
 import { getCurrentPlayer, getPlayerById } from '../../reducers/player';
 
-const InfoPanelContainer = ({ ...props }) => <InfoPanel {...props} />;
+// const InfoPanelContainer = ({ request, ...props }) => {
+//     return <InfoPanel {...props} />;
+// };
+
+class InfoPanelContainer extends React.Component {
+    componentDidMount() {
+        this.props.fetchData('http://bbc.co.uk');
+    }
+    render() {
+        return <InfoPanel {...this.props} />;
+    }
+}
 
 export const mapStateToProps = state => {
     const selectedNation = getSelectedNation(state);
@@ -25,5 +38,8 @@ export const mapStateToProps = state => {
     };
 };
 export default connect(mapStateToProps, dispatch => {
-    return bindActionCreators({}, dispatch);
+    // return {
+    //     fetchData: url => dispatch(fetchData(url))
+    // };
+    return bindActionCreators({ fetchData }, dispatch);
 })(InfoPanelContainer);
