@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layer, Stage } from 'react-konva';
 
-import Nation from '../nation';
+import Nation from '../Nation';
 
 import './Gameboard.css';
 

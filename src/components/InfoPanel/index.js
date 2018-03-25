@@ -5,7 +5,7 @@ export default ({ currentPlayer, ruler, attackTargets, selectedNation }) => (
     <div className="InfoPanel">
         <dl>
             <dt>Current Player</dt>
-            <dd>{currentPlayer.name}</dd>
+            <dd data-qaId="playerName">{currentPlayer.name}</dd>
             <dt>Ruler</dt>
             <dd>{ruler ? ruler.name : 'Neutral'}</dd>
 

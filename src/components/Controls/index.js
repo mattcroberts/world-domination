@@ -14,7 +14,7 @@ export default ({
         <button onClick={onEndTurnClick}>End turn</button>
         <button onClick={onChooseStartNationClick}>Choose Home Nation</button>
 
-        <button disabled={!controlEnabled.attack} onClick={onAttackClick}>
+        <button data-qaId="attack" disabled={!controlEnabled.attack} onClick={onAttackClick}>
             Attack
         </button>
     </div>
