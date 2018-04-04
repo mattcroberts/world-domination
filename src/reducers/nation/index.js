@@ -1,27 +1,20 @@
 import _merge from 'lodash.merge';
 import { ACTIONS } from '../../actions/nation';
-import map from '../../maps/out.json';
-import borders from '../../maps/borders.json';
+import map from '../../maps/europe.json';
 import { getCurrentPlayer } from '../player';
 
 const ATTACK_COEFFICIENT = 2;
 const MIN_RESERVE_TROOPS = 1;
 
-const mapData = map.childs[2].childs
-    .filter(child => child.name === 'path')
-    .map((child, i) => ({
-        borders: borders[i] || [],
-        data: child.attrs.d
-    }));
-
-const defaultState = mapData.reduce((acc, nation, i) => {
+const defaultState = map.reduce((acc, nation, i) => {
     return {
         ...acc,
         [i]: {
             id: i,
             selected: false,
             player: null,
-            borders: nation.borders,
+            borders: nation.borderNations,
+            name: nation.name,
             troops: 0
         }
     };

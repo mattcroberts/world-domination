@@ -4,22 +4,16 @@ import { bindActionCreators } from 'redux';
 
 import Dummy from '../../components/Dummy';
 
-import map from '../../maps/out.json';
+import map from '../../maps/europe.json';
 import { nationClick } from '../../actions/nation';
 import { getPlayerById } from '../../reducers/player';
-
-const mapData = map.childs[2].childs
-    .filter(child => child.name === 'path')
-    .map(child => ({
-        data: child.attrs.d
-    }));
 
 const GameboardContainer = ({ nations, ...otherProps }) => {
     const nationsWithMap = Object.entries(nations).reduce(
         (acc, [id, nation]) => {
             return Object.assign(acc, {
                 [id]: Object.assign(nation, {
-                    map: mapData[id].data
+                    map: map[id].path
                 })
             });
         },

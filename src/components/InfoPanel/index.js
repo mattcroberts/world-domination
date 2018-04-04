@@ -9,8 +9,12 @@ export default ({ currentPlayer, ruler, attackTargets, selectedNation }) => (
             <dt>Ruler</dt>
             <dd>{ruler ? ruler.name : 'Neutral'}</dd>
 
-            <dt>NationId</dt>
-            <dd>{selectedNation ? selectedNation.id : 'N/A'}</dd>
+            <dt>Name</dt>
+            <dd>
+                {selectedNation
+                    ? `${selectedNation.name} (${selectedNation.id})`
+                    : 'N/A'}
+            </dd>
             <dt>Borders</dt>
             <dd>{selectedNation ? selectedNation.borders.join(',') : ''}</dd>
 
