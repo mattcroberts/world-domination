@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog should render 1`] = `
+<form
+  className="Dialog"
+/>
+`;
+
+exports[`Dialog should show when visible prop is true 1`] = `
+<form
+  className="Dialog show"
+/>
+`;

@@ -2,5 +2,11 @@
   display: none;
   background: lightblue;
   position: absolute;
-  left: 100px;
+  z-index: 1;
+  width: 50%;
+  height: 30%;
+}
+
+.Dialog.show {
+  display: block;
 }

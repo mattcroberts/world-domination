@@ -9,11 +9,13 @@ import Dialog from './components/Dialog';
 
 const App = () => (
     <React.Fragment>
+        <div className="DialogContainer">
+            <Dialog />
+        </div>
         <ControlsContainer />
         <div className="App">
             <GameboardContainer />
             <InfoPanelContainer />
-            <Dialog />
         </div>
     </React.Fragment>
 );

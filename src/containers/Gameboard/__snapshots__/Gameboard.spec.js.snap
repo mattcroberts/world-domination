@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameboardContainer should render 1`] = `
+<GameboardWrapper
+  nationClick={[Function]}
+  nations={Object {}}
+/>
+`;

@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Dummy from '../../components/Dummy';
+import GameboardWrapper from '../../components/GameboardWrapper';
 
 import map from '../../maps/europe.json';
 import { nationClick } from '../../actions/nation';
 import { getPlayerById } from '../../reducers/player';
 
-const GameboardContainer = ({ nations, ...otherProps }) => {
+export const GameboardContainer = ({ nations, ...otherProps }) => {
     const nationsWithMap = Object.entries(nations).reduce(
         (acc, [id, nation]) => {
             return Object.assign(acc, {
@@ -19,7 +19,7 @@ const GameboardContainer = ({ nations, ...otherProps }) => {
         },
         {}
     );
-    return <Dummy nations={nationsWithMap} {...otherProps} />;
+    return <GameboardWrapper nations={nationsWithMap} {...otherProps} />;
 };
 
 export const mapStateToProps = (state, ownProps) => {

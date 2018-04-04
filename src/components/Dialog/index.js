@@ -1,10 +1,8 @@
 import React from 'react';
+import classnames from 'classnames';
+
 import './Dialog.css';
 
-export default () => (
-    <form className="Dialog">
-        <h1>How Many Troops to send?</h1>
-        <input type="number" />
-        <button>Submit</button>
-    </form>
+export default ({ visible }) => (
+    <form className={classnames('Dialog', { show: visible })} />
 );

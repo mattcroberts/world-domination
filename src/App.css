@@ -15,7 +15,11 @@ body {
   align-items: stretch;
 }
 
-.Dummy {
-  flex: 4 0;
-  overflow: hidden;
+.DialogContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }

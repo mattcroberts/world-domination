@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Gameboard from './Gameboard';
+import './GameboardWrapper.css';
+import Gameboard from '../Gameboard';
 
-export default class Dummy extends React.Component {
+export default class GameboardWrapper extends React.Component {
     constructor(props) {
         super(props);
         this.onResize = this.onResize.bind(this);
@@ -33,7 +34,10 @@ export default class Dummy extends React.Component {
             />
         ) : null;
         return (
-            <div className="Dummy" ref={element => (this.element = element)}>
+            <div
+                className="GameboardWrapper"
+                ref={element => (this.element = element)}
+            >
                 {component}
             </div>
         );

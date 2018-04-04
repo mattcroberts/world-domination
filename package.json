@@ -3,16 +3,6 @@
   "homepage": "https://mattcroberts.github.io/world-domination",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "konva": "^1.7.6",
-    "lodash.merge": "^4.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-konva": "^1.6.5",
-    "react-redux": "^5.0.7",
-    "react-scripts": "1.1.1",
-    "redux": "^3.7.2"
-  },
   "scripts": {
     "lint": "eslint ./src",
     "predeploy": "npm run build",
@@ -24,6 +14,22 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "konva": "^1.7.6",
+    "lodash.merge": "^4.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-konva": "^1.6.5",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2"
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.10",
     "@storybook/addon-links": "^3.3.10",
@@ -32,6 +38,7 @@
     "chai-enzyme": "^1.0.0-beta.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
     "eslint": "^4.17.0",
     "eslint-plugin-react": "^7.6.1",
     "gh-pages": "^1.1.0"
