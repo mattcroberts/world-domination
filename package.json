@@ -21,26 +21,29 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "konva": "^1.7.6",
+    "konva": "^2.5.1",
     "lodash.merge": "^4.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-konva": "^1.6.5",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-konva": "^16.6.31",
     "react-redux": "^5.0.7",
-    "react-scripts": "1.1.1",
+    "react-scripts": "^2.1.1",
     "redux": "^3.7.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.3.10",
-    "@storybook/addon-links": "^3.3.10",
-    "@storybook/react": "^3.3.10",
     "chai": "^4.1.2",
     "chai-enzyme": "^1.0.0-beta.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.3",
-    "eslint": "^4.17.0",
-    "eslint-plugin-react": "^7.6.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "5.6.0",
+    "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^1.1.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
