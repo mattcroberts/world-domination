@@ -1,6 +1,13 @@
 {
-  "main.css": "static/css/main.c69b9628.css",
-  "main.css.map": "static/css/main.c69b9628.css.map",
-  "main.js": "static/js/main.9ed58872.js",
-  "main.js.map": "static/js/main.9ed58872.js.map"
+  "main.css": "/world-domination/static/css/main.a10cced1.chunk.css",
+  "main.js": "/world-domination/static/js/main.ea53e0a4.chunk.js",
+  "main.js.map": "/world-domination/static/js/main.ea53e0a4.chunk.js.map",
+  "static/js/1.9ace12af.chunk.js": "/world-domination/static/js/1.9ace12af.chunk.js",
+  "static/js/1.9ace12af.chunk.js.map": "/world-domination/static/js/1.9ace12af.chunk.js.map",
+  "runtime~main.js": "/world-domination/static/js/runtime~main.668bbb39.js",
+  "runtime~main.js.map": "/world-domination/static/js/runtime~main.668bbb39.js.map",
+  "static/css/main.a10cced1.chunk.css.map": "/world-domination/static/css/main.a10cced1.chunk.css.map",
+  "index.html": "/world-domination/index.html",
+  "precache-manifest.83223d21d173c19bf6aeb6805ceff6a2.js": "/world-domination/precache-manifest.83223d21d173c19bf6aeb6805ceff6a2.js",
+  "service-worker.js": "/world-domination/service-worker.js"
 }
